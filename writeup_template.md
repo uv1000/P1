@@ -40,10 +40,13 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 * output a flag indication if the aforementioned worked or failed.
 * using a global variable  "prev_line_image" (yes I know, see comments/suggestions below, this is nothing but a quick and truely dirty hack ... but it works for a first prototype) 
 
-
-The following figure and the link (to the "challenge" video) demonstrate that the implementation submitted does the job, i.e. it should meet specification, yet it has several shortcomings both in function and in programming style, see details and suggestions for improvements below.
+The following figure 
 ![alt text][image2]
-[Challenge video with lines](./test_videos_output/challenge.mp4)
+and the following link to the
+["challenge" video with lane-lines](./test_videos_output/challenge.mp4)
+should demonstrate that the implementation submitted does the job, i.e. it should meet specification. Proof of concept
+
+Yet it has several shortcomings both in function and in programming style, see detailed discussion of shortcomings and suggestions for improvements below.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
