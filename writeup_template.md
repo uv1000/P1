@@ -9,11 +9,12 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
-The implementation does the job, i.e. should meet specification, yet it has several shortcomings both in function and in programming style, see details and suggestions for improvements below.
 
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
+[image2]: ./test_images/output/solidWhiteCurvewith_lines.jpg "Static example image with lines"
+
 
 ---
 
@@ -30,12 +31,19 @@ My pipeline consistsof 7 steps
 *  clip the image again, using "region_of_interest()" once more. Otherwise the aforementioned lines would appear too long and form an X-shaped "cross". 
 *  blend the image of the cliped lane-lines with the original input-image, using "weighted_img()", and return
  
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+ 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function as follows:
+* partition the list of lines provided by the Hough transform  into "left-line-sublist", "right-lines-sublist" and "rubbish-lines-sublist"
+* compute offsets and slope (effectively performing Hough back-transform manually ...)
+* average over  "left-lines-sublist" and "right-lines-sublist", to get a left-line and a right line. This may fail!
+* output a flag indication if the aforementioned worked or failed.
+* using a global variable  "prev_line_image" (yes I know, see comments/suggestions below, this is nothing but a quick and truely dirty hack ... but it works for a first prototype) 
 
-![alt text][image1]
 
+The following figure and the link (to the "challenge" video) demonstrate that the implementation submitted does the job, i.e. it should meet specification, yet it has several shortcomings both in function and in programming style, see details and suggestions for improvements below.
+![alt text][image2]
+[Challenge video with lines](./test_videos_output/challenge.mp4)
 
 ### 2. Identify potential shortcomings with your current pipeline
 
